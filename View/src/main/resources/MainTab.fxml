@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import cps.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cps.MainTabController">
+    <children>
+        <VBox layoutX="633.0" layoutY="80.0" onDragDropped="#onHistogramBinsChanged" prefHeight="604.0" prefWidth="684.0">
+            <children>
+                <LineChart fx:id="chart" prefHeight="422.0" prefWidth="300.0">
+                    <xAxis>
+                        <NumberAxis label="t[s]" side="BOTTOM" fx:id="xAxis" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxis" label="A" prefWidth="30.0" side="LEFT" />
+                    </yAxis>
+                </LineChart>
+                <BarChart fx:id="histogramChart" prefHeight="198.0" prefWidth="657.0">
+                    <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis side="LEFT" />
+                    </yAxis>
+                </BarChart>
+                <Slider fx:id="histogramBinsSlider" blockIncrement="1.0" majorTickUnit="5.0" max="20.0" min="5.0" minorTickCount="4" onMouseReleased="#onHistogramBinsChanged" prefHeight="38.0" prefWidth="360.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+            </children>
+        </VBox>
+        <VBox layoutX="604.0" layoutY="713.0" prefHeight="5.0" prefWidth="105.0" />
+        <ComboBox fx:id="signalOperationList" layoutX="237.0" layoutY="72.0" prefHeight="31.0" prefWidth="137.0" />
+        <Button fx:id="displayButton" alignment="CENTER" layoutX="237.0" layoutY="179.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#display" prefHeight="55.0" prefWidth="137.0" text="Generuj 1 sygnał" textAlignment="CENTER" wrapText="true" />
+        <GenerateSignal fx:id="basicGenerateSignal" layoutX="14.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="200.0" />
+        <GenerateSignal fx:id="extraGenerateSignal" layoutX="394.0" layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="290.0" prefWidth="200.0" />
+        <Button fx:id="executeButton" layoutX="265.0" layoutY="116.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onExecuteButton" prefHeight="30.0" prefWidth="80.0" text="Wykonaj" />
+        <Button fx:id="saveButton" layoutX="13.0" layoutY="601.0" mnemonicParsing="false" onAction="#saveToFile" prefHeight="30.0" prefWidth="179.0" text="Zapisywanie" />
+        <Button fx:id="multiplyButton" layoutX="111.0" layoutY="451.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#divide" prefHeight="30.0" prefWidth="80.0" text="/" />
+        <Button fx:id="subtractButton" layoutX="111.0" layoutY="399.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#subtract" prefHeight="30.0" prefWidth="80.0" text="-" />
+        <Button fx:id="divideButton" layoutX="14.0" layoutY="451.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#multiply" prefHeight="30.0" prefWidth="80.0" text="*" />
+        <Button fx:id="loadButton" layoutX="13.0" layoutY="651.0" mnemonicParsing="false" onAction="#loadSignal" prefHeight="30.0" prefWidth="179.0" text="Wczytywanie" />
+        <Button fx:id="addButton" layoutX="14.0" layoutY="399.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="80.0" text="+" />
+        <HBox layoutX="287.0" layoutY="402.0" prefHeight="25.0" prefWidth="200.0">
+            <children>
+                <Button fx:id="sampleButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sample" prefHeight="26.0" prefWidth="107.0" text="Próbkowanie" />
+                <TextField fx:id="samplingValue" prefHeight="26.0" prefWidth="93.0" text="1000" />
+            </children>
+        </HBox>
+        <HBox disable="true" layoutX="890.0" layoutY="47.0" prefHeight="25.0" prefWidth="200.0" visible="false">
+            <children>
+                <TextField fx:id="bitsValue" disable="true" prefHeight="26.0" prefWidth="94.0" visible="false" />
+            </children>
+        </HBox>
+        <HBox disable="true" layoutX="890.0" layoutY="80.0" prefHeight="31.0" prefWidth="200.0" visible="false">
+            <children>
+                <TextField fx:id="interpolationFrequencyTextField" prefHeight="26.0" prefWidth="89.0" />
+            </children>
+        </HBox>
+        <HBox disable="true" layoutX="890.0" layoutY="146.0" prefHeight="25.0" prefWidth="200.0">
+            <children>
+                <TextField fx:id="probesValue" disable="true" prefHeight="26.0" prefWidth="124.0" text="5" visible="false" />
+            </children>
+        </HBox>
+        <HBox disable="true" layoutX="890.0" layoutY="181.0" prefHeight="25.0" prefWidth="200.0" visible="false">
+            <children>
+                <TextField fx:id="sincFq" prefHeight="26.0" prefWidth="124.0" />
+            </children>
+        </HBox>
+      <Button layoutX="13.0" layoutY="553.0" mnemonicParsing="false" onAction="#loadDistanceSimulation" prefHeight="25.0" prefWidth="179.0" text="Radar - analiza korelacyjna" />
+      <javafx.scene.layout.HBox layoutX="690.0" layoutY="514.0" prefHeight="34.0" prefWidth="200.0" />
+      <HBox layoutX="690.0" layoutY="548.0" prefHeight="34.0" prefWidth="200.0" />
+      <VBox layoutX="399.0" layoutY="728.0" prefHeight="17.0" prefWidth="105.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="2.0" stroke="TRANSPARENT" strokeType="INSIDE" width="203.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="5.0" layoutX="10.0" layoutY="67.0" stroke="TRANSPARENT" strokeType="INSIDE" width="203.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="5.0" layoutX="10.0" layoutY="98.0" stroke="TRANSPARENT" strokeType="INSIDE" width="203.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="5.0" layoutX="10.0" layoutY="123.0" stroke="TRANSPARENT" strokeType="INSIDE" width="203.0" />
+         </children>
+      </VBox>
+      <Button layoutX="14.0" layoutY="499.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#convolute" prefHeight="30.0" prefWidth="80.0" text="Splot" />
+      <Button layoutX="111.0" layoutY="499.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#correlate" prefHeight="30.0" prefWidth="80.0" text="Korelacja" />
+      <Separator layoutX="618.0" layoutY="3.0" orientation="VERTICAL" prefHeight="682.0" prefWidth="15.0" />
+      <Label alignment="CENTER" layoutX="10.0" layoutY="6.0" prefHeight="17.0" prefWidth="602.0" text="Generowanie sygnałów" />
+      <Label alignment="CENTER" layoutX="14.0" layoutY="29.0" prefHeight="17.0" prefWidth="186.0" text="1 sygnał" />
+      <Label alignment="CENTER" layoutX="407.0" layoutY="29.0" prefHeight="17.0" prefWidth="186.0" text="2 sygnał" />
+          <HBox layoutX="633.0" layoutY="7.0" prefHeight="32.0" prefWidth="137.0">
+              <children>
+                  <Label prefHeight="32.0" prefWidth="53.0" text="Średnia:" />
+                  <Label fx:id="averageValueLabel" prefHeight="32.0" prefWidth="87.0" />
+              </children>
+          </HBox>
+          <HBox layoutX="750.0" layoutY="7.0" prefHeight="32.0" prefWidth="158.0">
+              <children>
+                  <Label prefHeight="32.0" prefWidth="81.0" text="Średnia bęwz.:" />
+                  <Label fx:id="averageAbsoluteValueLabel" prefHeight="32.0" prefWidth="87.0" />
+              </children>
+          </HBox>
+          <HBox layoutX="899.0" layoutY="7.0" prefHeight="32.0" prefWidth="124.0">
+              <children>
+                  <Label prefHeight="46.0" prefWidth="107.0" text="Moc śred.:" />
+                  <Label fx:id="averagePowerValueLabel" prefHeight="32.0" prefWidth="87.0" />
+              </children>
+          </HBox>
+          <HBox layoutX="1030.0" layoutY="7.0" prefHeight="32.0" prefWidth="107.0">
+              <children>
+                  <Label prefHeight="46.0" prefWidth="107.0" text="Wariancja:" />
+                  <Label fx:id="varianceValueLabel" prefHeight="32.0" prefWidth="87.0" />
+              </children>
+          </HBox>
+          <HBox layoutX="1160.0" layoutY="7.0" prefHeight="32.0" prefWidth="171.0">
+              <children>
+                  <Label prefHeight="32.0" prefWidth="126.0" text="Wartość skuteczna:" />
+                  <Label fx:id="effectivePowerValueLabel" prefHeight="32.0" prefWidth="87.0" />
+              </children>
+           </HBox>
+      <Label alignment="CENTER" layoutX="243.0" layoutY="51.0" prefHeight="17.0" prefWidth="124.0" text="Operacja" />
+      <Label alignment="CENTER" layoutX="5.0" layoutY="360.0" prefHeight="17.0" prefWidth="602.0" text="Operacje na sygnałach" />
+      <Separator layoutX="7.0" layoutY="347.0" prefHeight="2.0" prefWidth="618.0" />
+      <Label alignment="CENTER" layoutX="293.0" layoutY="434.0" prefHeight="17.0" prefWidth="203.0" text="Filtracja" />
+      <Label layoutX="292.0" layoutY="523.0" prefHeight="17.0" prefWidth="84.0" text="Rodzaj filtra" />
+      <ComboBox fx:id="filterTypeComboBox" layoutX="383.0" layoutY="519.0" prefHeight="26.0" prefWidth="158.0" />
+      <HBox layoutX="294.0" layoutY="454.0" prefHeight="25.0" prefWidth="89.0">
+         <children>
+            <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="41.0" text="M" />
+            <TextField fx:id="mTextField" prefHeight="25.0" prefWidth="38.0" text="5" />
+         </children>
+      </HBox>
+      <HBox layoutX="294.0" layoutY="487.0" prefHeight="25.0" prefWidth="80.0">
+         <children>
+            <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="41.0" text="Fo" />
+            <TextField fx:id="foTextField" prefHeight="25.0" prefWidth="38.0" text="5" />
+         </children>
+      </HBox>
+      <Label layoutX="292.0" layoutY="557.0" prefHeight="17.0" prefWidth="84.0" text="Rodzaj okna" />
+      <ComboBox fx:id="windowTypeComboBox" layoutX="383.0" layoutY="552.0" prefHeight="26.0" prefWidth="158.0" />
+      <Button layoutX="298.0" layoutY="600.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#filter" prefHeight="30.0" prefWidth="179.0" text="Filtruj" />
+      <Button layoutX="294.0" layoutY="651.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showH" prefHeight="30.0" prefWidth="179.0" text="Wyświetl odpowiedź impulsową" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="2.0" layoutX="467.0" layoutY="705.0" stroke="TRANSPARENT" strokeType="INSIDE" width="203.0" />
+    </children>
+</AnchorPane>

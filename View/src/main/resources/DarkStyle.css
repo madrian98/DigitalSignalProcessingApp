@@ -1,0 +1,28 @@
+.root {
+    -fx-accent: #1e74c6;
+    -fx-focus-color: -fx-accent;
+    -fx-base: #373e43;
+    -fx-control-inner-background: derive(-fx-base, 35%);
+    -fx-control-inner-background-alt: -fx-control-inner-background;
+}
+.text-field {
+    -fx-prompt-text-fill: gray;
+}
+.button {
+    -fx-focus-traversable: false;
+}
+.button:hover {
+    -fx-text-fill: white;
+}
+.separator *.line {
+    -fx-background-color: #3C3C3C;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: white;
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: white;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import cps.*?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<fx:root xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+         prefHeight="400.0"
+         prefWidth="207.0" type="VBox" xmlns="http://javafx.com/javafx/8.0.121">
+    <children>
+        <ComboBox fx:id="signalList" onAction="#onSignalChosen" prefHeight="31.0" prefWidth="205.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="10.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0"/>
+        <SignalParameter fx:id="amplitudeSignalParameter"/>
+        <SignalParameter fx:id="periodSignalParameter"/>
+        <SignalParameter fx:id="t1SignalParameter"/>
+        <SignalParameter fx:id="durationSignalParameter"/>
+        <SignalParameter fx:id="kwSignalParameter"/>
+        <SignalParameter fx:id="nsSignalParameter"/>
+        <SignalParameter fx:id="samplingFrequencySignalParameter"/>
+        <SignalParameter fx:id="probabilitySignalParameter"/>
+    </children>
+</fx:root>
