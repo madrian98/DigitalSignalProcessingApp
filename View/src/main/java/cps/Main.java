@@ -19,7 +19,7 @@ public class Main extends Application {
         Parent rootNode = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));
         Scene scene = new Scene(rootNode, 1350, 700);
         scene.getStylesheets().add("/DarkStyle.css");
-        stage.setTitle("Zad3");
+        stage.setTitle("DigitalSignalProcessing");
         stage.setScene(scene);
         stage.show();
     }
