@@ -21,10 +21,10 @@ import java.util.function.Function;
 
 public class GenerateSignal extends VBox {
 
-    private static final ObservableList<String> AVAILABLE_SIGNALS = FXCollections.observableArrayList("(1)Szum o rozkładzie jednostajnym",
-            "(2)Szum gaussowski", "(3)Sygnał sinusoidalny", "(4)Sygnał sinusoidalny wyprostowany jednopołówkowo",
-            "(5)Sygnał sinusoidalny wyprsotowany dwupołówkowo", "(6)Sygnał prostokątny", "(7)Sygnał prostokątny symetryczny", "(8)Sygnał trójkątny",
-            "(9)Skok jednostkowy", "(10)Impuls jednostkowy", "(11)Szum impulsowy");
+    private static final ObservableList<String> AVAILABLE_SIGNALS = FXCollections.observableArrayList("(1)UNIFORM_NOISE",
+            "(2)GAUSSIAN_NOISE", "(3)SINUSOID_SIGNAL", "(4)SINUSOID_ONE_SIDE_SIGNAL",
+            "(5)SINUSOID_TWO_SIDE_SIGNAL", "(6)RECTANGLE_SINGAL", "(7)SYMETRIC_RECTANGLE_SIGNAL", "(8)TRIANGLE_SIGNAL",
+            "(9)UNITARY_SIGNAL", "(10)UNITARY_IMPULSE", "(11)IMPULSE_NOISE");
 
     private static final Map<String, String> LABEL_TO_SIGNAL_MAP = new HashMap<>();
 
@@ -179,7 +179,7 @@ public class GenerateSignal extends VBox {
                 return probabilitySignalParameter;
 
             default:
-                throw new IllegalArgumentException("Sprawdź pole" + field);
+                throw new IllegalArgumentException("Check the field" + field);
         }
     }
 

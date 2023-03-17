@@ -9,7 +9,7 @@
    <children>
       <VBox prefHeight="488.0" prefWidth="705.0">
          <children>
-            <Label prefHeight="17.0" prefWidth="102.0" text="Sygnał emitowany" />
+            <Label prefHeight="17.0" prefWidth="102.0" text="Transmitted signal" />
             <LineChart fx:id="transmittedSignalChart" prefHeight="164.0" prefWidth="703.0">
               <xAxis>
                 <NumberAxis side="BOTTOM" />
@@ -18,7 +18,7 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </LineChart>
-            <Label prefHeight="17.0" prefWidth="154.0" text="Sygnał odbity" />
+            <Label prefHeight="17.0" prefWidth="154.0" text="Reflected signal" />
             <LineChart fx:id="receivedSignalChart" prefHeight="205.0" prefWidth="706.0">
                <xAxis>
                   <NumberAxis side="BOTTOM" />
@@ -27,7 +27,7 @@
                   <NumberAxis side="LEFT" />
                </yAxis>
             </LineChart>
-            <Label prefHeight="17.0" prefWidth="119.0" text="Koreleacja sygnałów" />
+            <Label prefHeight="17.0" prefWidth="119.0" text="Signal correlation" />
             <LineChart fx:id="correlationChart" prefHeight="128.0" prefWidth="705.0">
               <xAxis>
                 <NumberAxis side="BOTTOM" />
@@ -42,54 +42,54 @@
          <children>
             <javafx.scene.layout.HBox prefHeight="34.0" prefWidth="241.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="189.0" text="Jednostka symulacji [s]" />
+                  <Label prefHeight="34.0" prefWidth="189.0" text="Simulation unit [s]" />
                   <TextField fx:id="timeUnitTextField" prefHeight="34.0" prefWidth="54.0" text="0.1" />
                </children>
             </javafx.scene.layout.HBox>
             <HBox layoutX="10.0" layoutY="10.0" prefHeight="34.0" prefWidth="241.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="189.0" text="Prędkość obiektu [m/s]" />
+                  <Label prefHeight="34.0" prefWidth="189.0" text="Object speed [m/s]" />
                   <TextField fx:id="objectSpeedInMetersPerSecond" prefHeight="34.0" prefWidth="54.0" text="0.001" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="44.0" prefHeight="34.0" prefWidth="241.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="189.0" text="Prędkość sygnału [m/s]" />
+                  <Label prefHeight="34.0" prefWidth="189.0" text="Signal speed [m/s]" />
                   <TextField fx:id="signalSpeedInMetersPerSecondTextField" prefHeight="34.0" prefWidth="54.0" text="1" />
                </children>
             </HBox>
             <javafx.scene.layout.HBox prefHeight="33.0" prefWidth="242.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="246.0" text="Okres sygnału" />
+                  <Label prefHeight="34.0" prefWidth="246.0" text="Signal period" />
                   <TextField fx:id="probingSignalFrequencyTextField" prefHeight="34.0" prefWidth="112.0" text="0.1" />
                </children>
             </javafx.scene.layout.HBox>
             <HBox layoutX="10.0" layoutY="113.0" prefHeight="33.0" prefWidth="242.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="246.0" text="Częstotliwość próbkowania" />
+                  <Label prefHeight="34.0" prefWidth="246.0" text="Sampling frequency" />
                   <TextField fx:id="samplingPeriodTextField" prefHeight="34.0" prefWidth="112.0" promptText="samplingPeriodTextField" text="10" />
                </children>
             </HBox>
             <HBox prefHeight="34.0" prefWidth="242.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="246.0" text="Rozmiar bufora" />
+                  <Label prefHeight="34.0" prefWidth="246.0" text="Buffor size" />
                   <TextField fx:id="bufferSizeTextField" prefHeight="34.0" prefWidth="112.0" text="100" />
                </children>
             </HBox>
             <HBox layoutX="10.0" layoutY="112.0" prefHeight="34.0" prefWidth="242.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="246.0" text="Okres raportowania [s]" />
+                  <Label prefHeight="34.0" prefWidth="246.0" text="Reporting period [s]" />
                   <TextField fx:id="reportPeriodTextField" prefHeight="34.0" prefWidth="112.0" text="1.0" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <Text layoutX="796.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wyniki pomiaru:" />
+      <Text layoutX="796.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Results:" />
       <VBox layoutX="706.0" layoutY="332.0" prefHeight="72.0" prefWidth="242.0">
          <children>
             <javafx.scene.layout.HBox prefHeight="34.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="34.0" prefWidth="198.0" text="Odległość rzeczywista [m]" />
+                  <Label prefHeight="34.0" prefWidth="198.0" text="Real distance [m]" />
                   <TextField fx:id="realDistanceInMetersTextField" editable="false" prefHeight="34.0" prefWidth="155.0" />
                </children>
             </javafx.scene.layout.HBox>

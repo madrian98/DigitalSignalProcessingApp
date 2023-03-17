@@ -85,7 +85,6 @@ public class ReaderWriter {
     }
 
     private static void prepareToSave(Signal signal) {
-        //TODO: Do we really need this?
         for (int i = 0; i < signal.getSamples().size(); i++) {
             double rounded = signal.getSamples().get(i);
             rounded = round_values(rounded, 2);

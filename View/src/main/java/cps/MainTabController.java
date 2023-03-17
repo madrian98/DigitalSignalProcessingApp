@@ -30,16 +30,16 @@ public class MainTabController {
             "-",
             "*",
             "/",
-            "Splot"
-            , "Korelacja",
-            "Korelacja przez splot");
+            "Convolution"
+            , "Correlation",
+            "Correlation via Convolution");
 
-    public static final ObservableList<String> FILTER_TYPES = FXCollections.observableArrayList("Dolnoprzepustowy",
-            "Środkowoprzepustowy",
-            "Górnoprzepustowy");
+    public static final ObservableList<String> FILTER_TYPES = FXCollections.observableArrayList("Low-pass",
+            "Band-pass",
+            "High-pass");
 
     public static final ObservableList<String> WINDOW_TYPES = FXCollections.observableArrayList(
-            "Prostokątne",
+            "Rectangular",
             "Hamming"
     );
 
@@ -146,7 +146,7 @@ public class MainTabController {
         } else if (type.equals(FILTER_TYPES.get(2))) {
             firFilter = new HighPassFilter();
         } else {
-            throw new IllegalArgumentException("Zły rodzaj filtra " + type);
+            throw new IllegalArgumentException("Incorrect filter type " + type);
         }
 
         return firFilter;
@@ -223,7 +223,7 @@ public class MainTabController {
 
         Scene nscene = new Scene(root);
         Stage tStatge = new Stage();
-        tStatge.setTitle("Analiza korelacyjna");
+        tStatge.setTitle("Correlation analysis");
         tStatge.setScene(nscene);
         tStatge.show();
     }
@@ -265,7 +265,7 @@ public class MainTabController {
         FileChooser.ExtensionFilter binaryExtension = new FileChooser.ExtensionFilter("Binary file", "*.bin");
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Zapisz sygnał");
+        fileChooser.setTitle("Save signal");
         File file = fileChooser.showSaveDialog(this.stage);
 
         if (file == null || signal == null) {
@@ -290,7 +290,7 @@ public class MainTabController {
             SignalParameters signalParameters = SignalParameters.measure(signal);
             displaySignalMeasurement(signalParameters);
 
-            basicGenerateSignal.displaySignal(signal, "Sygnal z pliku");
+            basicGenerateSignal.displaySignal(signal, "Signal from file");
         } catch (IOException e) {
             onSignalCreationException(e);
         }
@@ -300,7 +300,7 @@ public class MainTabController {
         FileChooser.ExtensionFilter binaryExtension = new FileChooser.ExtensionFilter("Binary file", "*.bin");
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Wczytaj sygnał");
+        fileChooser.setTitle("Load signal");
 
         File file = fileChooser.showOpenDialog(this.stage);
 
@@ -351,7 +351,7 @@ public class MainTabController {
             SignalParameters signalParameters = SignalParameters.measure(signal);
             displaySignalMeasurement(signalParameters);
 
-            basicGenerateSignal.displaySignal(signal, "Sygnal z pliku");
+            basicGenerateSignal.displaySignal(signal, "Signal from file");
         } catch (IOException e) {
             onSignalCreationException(e);
         }
@@ -379,15 +379,15 @@ public class MainTabController {
                 operator = SignalMerger::divide;
                 break;
 
-            case "Splot":
+            case "Convolution":
                 operator = Filters::convolute;
                 break;
 
-            case "Korelacja":
+            case "Correlation":
                 operator = Filters::correlate;
                 break;
 
-            case "Korelacja przez splot":
+            case "Correlation via Convolution":
                 operator = Filters::correlateByConvolution;
                 break;
 
@@ -433,7 +433,6 @@ public class MainTabController {
         double currentRange = histogram.getMin();
         final double columnWidth = (histogram.getMax() - histogram.getMin()) / histogram.getBins();
         for (int i = 0; i < histogram.getBins(); i++) {
-            //TODO: ADD HISTOGRAM COLUMN LENGTH TO THE HISTOGRAM CLASS
             String result = String.format("%.2f", currentRange);
             series1.getData().add(new XYChart.Data(result, histogram.getFrequencyList().get(i)));
             currentRange += columnWidth;
@@ -503,7 +502,7 @@ public class MainTabController {
 
             Scene nscene = new Scene(root);
             Stage tStatge = new Stage();
-            tStatge.setTitle("Odpowiedź impulsowa filtru");
+            tStatge.setTitle("Signal filter response");
             tStatge.setScene(nscene);
             tStatge.show();
 
